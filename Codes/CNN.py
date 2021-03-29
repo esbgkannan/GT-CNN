@@ -10,63 +10,7 @@ import numpy as np
 from tensorboardX import SummaryWriter
 import matplotlib.pyplot as plt
 
-class autoencoder(nn.Module):
-    def __init__(self, model):
-        super(autoencoder, self).__init__()
-        # pretrained cnn model
-        self.encoder = model
-        for p in self.parameters():
-            p.requires_grad = False
-            
-        # decoder
-        
-        self.trans1 = nn.ConvTranspose1d(in_channels=512, 
-                                         out_channels=512, 
-                                         kernel_size=15, 
-                                         stride=15, 
-                                         dilation=2, 
-                                         padding=3)
-        
-        self.relu1 = torch.nn.ReLU(inplace=True)
-        
-        self.in1 = nn.InstanceNorm1d(512)
-        
-        self.trans2 = nn.ConvTranspose1d(in_channels=512, 
-                                         out_channels=512, 
-                                         kernel_size=7, 
-                                         stride=7,
-                                         dilation=2, 
-                                         padding=1, 
-                                         output_padding=1)
 
-        self.relu2 = torch.nn.ReLU(inplace=True)   
-        
-        self.in2 = nn.InstanceNorm1d(512)
-
-        self.trans3 = nn.ConvTranspose1d(in_channels=512, 
-                                         out_channels=3, 
-                                         kernel_size=3, 
-                                         stride=1) 
-        
-
-    def forward(self, x):
-        _, _, x, _ = self.encoder(x)
-
-        batch = x.shape[0]
-
-        x = self.trans1(x)
-        x = self.relu1(x)
-        x = self.in1(x)
-        
-        x = self.trans2(x)
-        x = self.relu2(x) 
-        x = self.in2(x)
-
-        x = self.trans3(x)
-        x = F.sigmoid(x)  
-        x = x.transpose(1,2)
-        return x
-    
 # channel-wise attention
 class ChannelAttention(nn.Module):
     def __init__(self, in_planes, ratio=16):
