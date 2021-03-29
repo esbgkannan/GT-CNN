@@ -16,6 +16,9 @@ Please ensure the following software is installed:
 - `matplotlib` [link](https://matplotlib.org/stable/users/installing.html)
 - `umap` [link](https://umap-learn.readthedocs.io/en/latest/)
 - `jupyterlab` [link](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+- `opencv2`[link](https://pypi.org/project/opencv-python/)
+- `tensorboardX`[link](https://pypi.org/project/tensorboardX/)
+- `imblearn`(link)[https://pypi.org/project/imblearn/]
 
 ## Step1: Sequence collection
 Collect related sequences for any family, group you want to analyze. Ideally, you want >100 and <500 sequences purged with a sequnece identity of 10-95%.
@@ -27,22 +30,27 @@ Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 
 
 ## Step3: Preprocessing
-- Notebook: Preprocessing_pipline.ipynb
-- This notebook is mainly for 1. Domain and sequence lenghth based filtering, in our work, based on statistical analyasis, we select 798 as our cuttung threhold and padding length 2. Sequence paddings, this is mainly for CNN model to process 3. Data balancing, by augmenting underrepresented families with random mutation, each families are balanced to around 2k samples.
+- Notebook: 1-Preprocessing.ipynb
+- This notebook is mainly for 1. Domain and sequence lenghth based filtering, in our work, based on statistical analyasis, we select 798 as our cuttung threhold and padding length 2. Sequence paddings, this is mainly for CNN model to process.
+
+
+## Step4: CNN-Attention model training
+- Notebook: 2-CNNAttention.ipynb
+- This notebook is for training the cnn attention model using outputs generated from preprocessing steps, all the pretrained model and dataset is avaliable, please email to zz42551@uga.edu for request.
 
 
 ## Step4: Generate all GT level Reconstruction Error
-- Notebook: RE_generator.ipynb
+- Notebook: 5-RE_generator.ipynb
 - Pretrained: ./PretrainedModels/Autoencoder_gtAll.pickle
 - Better with GPU. 
 
 ## Step5: Generate GT cluster level Weighted Overlap Score
-- Notebook: RE_generator_sub.ipynb
+- Notebook: 5-RE_generator.ipynb
 - Pretrained: ./PretrainedModels/Autoencoder_gt--.pickle
 - Better with GPU.
 
 ## Step6: Analysis and fold prediction using the above results
-- Notebook: RE_analysis.ipynb
+- Notebook: 6-RE_analysis.ipynb
 
 ## Step7: Sequence, Sec. str Alignment (CAM for seq used in training if needed)
 - Notebook: CAM_analysis.ipynb
