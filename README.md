@@ -18,7 +18,7 @@ Please ensure the following software is installed:
 - `jupyterlab` [link](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
 - `opencv2`[link](https://pypi.org/project/opencv-python/)
 - `tensorboardX`[link](https://pypi.org/project/tensorboardX/)
-- `imblearn`(link)[https://pypi.org/project/imblearn/]
+- [`imblearn`](https://pypi.org/project/imblearn/)
 
 ## Dataset and Pretrained Models
 
