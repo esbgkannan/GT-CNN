@@ -76,7 +76,7 @@ Required steps are Step 1-3 and 6-8.
 
 The pretrained models from Step 4 and 5 are made available.
 
-All the required files to run the notebooks for these required steps are provided in the directories [`PretrainedModels`](./PretrainedModels) and [`Datasets`](./Datasets) 
+All the required files to run the notebooks for these required steps are provided in download links and can be moved to directories [`PretrainedModels`](./PretrainedModels) and [`Datasets`](./Datasets) 
 
 All the required notebooks outlining the steps are provided in the [`Codes`](./Codes) directory.
 
