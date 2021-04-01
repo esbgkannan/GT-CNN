@@ -22,9 +22,9 @@ Please ensure the following software is installed:
 
 ## Dataset and Pretrained Models
 
-All used dataset is avaliable through this link:[dataset](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
+All used dataset is avaliable through this link:[`dataset`](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
 
-All pretrained model is avaliable through this link: [models](https://www.dropbox.com/sh/gn60mm7dy4ywrcr/AADLnvFDiMDuObYOOHiyHwA1a?dl=0), please download and put it under main folder with name ./PretrainedModels
+All pretrained model is avaliable through this link: [`models`](https://www.dropbox.com/sh/gn60mm7dy4ywrcr/AADLnvFDiMDuObYOOHiyHwA1a?dl=0), please download and put it under main folder with name ./PretrainedModels
 
 ## Complete Pipeline:
 
@@ -34,7 +34,7 @@ Collect related sequences for any family, group you want to analyze. Ideally, yo
 Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 
 ### Step2: Secondary structure prediction
-- Done using NetsurfP2.0[link](http://www.cbs.dtu.dk/services/NetSurfP/). Generates a csv file with the predictions for all sequences. 
+- Done using [`NetsurfP2.0`](http://www.cbs.dtu.dk/services/NetSurfP/). Generates a csv file with the predictions for all sequences. 
 - Note: any other SOTA SS predictor also works as long as the output csv file is formated with such columns: ["Name", "fold", "family", "q3seq", "rawseq"]
 
 
