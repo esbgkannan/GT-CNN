@@ -86,7 +86,7 @@ Outputs for each step are written to the ExampleOutputs directory and can be cha
 
 Natarajan Kannan: nkannan@uga.edu
 
-Zhongliang Zhou: Zhongliang.Zhou@uga.edu
+Zhongliang Zhou: zz42551@uga.edu
 
 Rahil Taujale: rtaujale@uga.edu
 
