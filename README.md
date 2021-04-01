@@ -48,12 +48,12 @@ Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 ### Step4: CNN-Attention model training
 - Notebook: [`2-CNNAttention.ipynb`](./Codes/2-CNNAttention.ipynb) 
 - This notebook is for training the cnn attention model using outputs generated from preprocessing steps.
-- The pretrained model is made available and dataset is avaliable upon request.
+- The pretrained model and the training datasets are made available.
 
 ### Step5: Autoencoder models training
 - Notebook: [`3-CNNAutoencoder-all.ipynb`](./Codes/3-CNNAutoencoder-all.ipynb) and [`4-CNNAutoencoder-sub.ipynb`](./Codes/4-CNNAutoencoder-sub.ipynb) 
 - This notebook is for training the autoencoder model using locked features generated from the CNN model.
-- The pretrained models are made available and dataset is avaliable upon request.
+- The pretrained models and the training datasets are made available.
 
 ### Step6: Generate all GT level Reconstruction Error
 - Notebook: [`5-RE_FAS_calculations.ipynb`](./Codes/5-RE_FAS_calculations.ipynb) 
