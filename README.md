@@ -20,7 +20,7 @@ Please ensure the following software is installed:
 - [`tensorboardX`](https://pypi.org/project/tensorboardX/)
 - [`imblearn`](https://pypi.org/project/imblearn/)
 
-## Dataset and Pretrained Models
+## Datasets and Pretrained Models
 
 All used datasets are avaliable through this link:[`dataset`](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
 
