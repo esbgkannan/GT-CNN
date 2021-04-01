@@ -22,7 +22,7 @@ Please ensure the following software is installed:
 
 ## Dataset and Pretrained Models
 
-All used dataset is avaliable through this link:[`dataset`](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
+All used datasets are avaliable through this link:[`dataset`](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
 
 All pretrained model is avaliable through this link: [`models`](https://www.dropbox.com/sh/gn60mm7dy4ywrcr/AADLnvFDiMDuObYOOHiyHwA1a?dl=0), please download and put it under main folder with name ./PretrainedModels
 
