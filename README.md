@@ -39,34 +39,34 @@ Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 
 
 ### Step3: Preprocessing
-- Notebook: [1-Preprocessing.ipynb](./Codes/1-Preprocessing.ipynb) 
+- Notebook: [`1-Preprocessing.ipynb`](./Codes/1-Preprocessing.ipynb) 
 - This notebook is mainly for: 
 1. Domain and sequence lenghth based filtering, in our work, based on statistical analyasis, we select 798 as our cuttung threhold and padding length 
 2. Sequence paddings, this is mainly for CNN model to process.
 
 
 ### Step4: CNN-Attention model training
-- Notebook: [2-CNNAttention.ipynb](./Codes/2-CNNAttention.ipynb) 
+- Notebook: [`2-CNNAttention.ipynb`](./Codes/2-CNNAttention.ipynb) 
 - This notebook is for training the cnn attention model using outputs generated from preprocessing steps.
 - The pretrained model is made available and dataset is avaliable upon request.
 
 ### Step5: Autoencoder models training
-- Notebook: [3-CNNAutoencoder-all.ipynb](./Codes/3-CNNAutoencoder-all.ipynb) and [4-CNNAutoencoder-sub.ipynb](./Codes/4-CNNAutoencoder-sub.ipynb) 
+- Notebook: [`3-CNNAutoencoder-all.ipynb`](./Codes/3-CNNAutoencoder-all.ipynb) and [`4-CNNAutoencoder-sub.ipynb`](./Codes/4-CNNAutoencoder-sub.ipynb) 
 - This notebook is for training the autoencoder model using locked features generated from the CNN model.
 - The pretrained models are made available and dataset is avaliable upon request.
 
 ### Step6: Generate all GT level Reconstruction Error
-- Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
+- Notebook: [`5-RE_FAS_calculations.ipynb`](./Codes/5-RE_FAS_calculations.ipynb) 
 - Pretrained: ./PretrainedModels/Autoencoder_gtAll.pickle
 - Better with GPU. 
 
 ### Step7: Generate GT cluster level Fold Assignment Score
-- Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
+- Notebook: [`5-RE_FAS_calculations.ipynb`](./Codes/5-RE_FAS_calculations.ipynb) 
 - Pretrained: ./PretrainedModels/Autoencoder_gt--.pickle
 - Better with GPU.
 
 ### Step8: Analysis and fold prediction using the above results
-- Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
+- Notebook: [`5-RE_FAS_calculations.ipynb`](./Codes/5-RE_FAS_calculations.ipynb) 
 - Plotting of results.
 - Generate RE and FAS values for new families.
 
@@ -76,9 +76,9 @@ Required steps are Step 1-3 and 6-8.
 
 The pretrained models from Step 4 and 5 are made available.
 
-All the required files to run the notebooks for these required steps are provided in the directories [PretrainedModels](./PretrainedModels) and [Datasets](./Datasets) 
+All the required files to run the notebooks for these required steps are provided in the directories [`PretrainedModels`](./PretrainedModels) and [`Datasets`](./Datasets) 
 
-All the required notebooks outlining the steps are provided in the [Codes](./Codes) directory.
+All the required notebooks outlining the steps are provided in the [`Codes`](./Codes) directory.
 
 Outputs for each step are written to the ExampleOutputs directory and can be changed within the jupyter notebooks.
 
