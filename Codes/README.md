@@ -1,4 +1,4 @@
-# Pipeline to prredict GT fold for any new group of sequences.
+# Pipeline to predict GT fold for any new group of sequences.
 
 ## Step1: Sequence collection
 Collect related sequences for any family, group you want to analyze. Ideally, you want >100 and <500 sequences purged with a sequnece identity of 10-95%.

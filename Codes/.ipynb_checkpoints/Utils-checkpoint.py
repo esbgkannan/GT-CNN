@@ -252,7 +252,7 @@ def Dataset_Loader_Three(df, le_fam, le_fold, vocab, BATCH_SIZE, cuda = True):
     return ds, dl
 
 
-# a function to caldulate reconstruction error
+# a function to calculate reconstruction error
 def reconstruction_error_calculation(model, df, le_fam, le_fold, cuda_gpu, criterion, vocab):
     gt_ds, gt_dl = Dataset_Loader_Three(df, le_fam, le_fold, vocab, BATCH_SIZE=1, cuda = cuda_gpu)
     reconstruction_err = []
@@ -265,34 +265,6 @@ def reconstruction_error_calculation(model, df, le_fam, le_fold, cuda_gpu, crite
         reconstruction_err.append([df.iloc[i].Name,df.iloc[i].fold,df.iloc[i].family, loss.item()])
     return pd.DataFrame(reconstruction_err, columns=["Name","Fold","Family","Err"])
 
-# a funtion to fit giving data using extreme value distribution
-def Plot_Len_Dis_Extreme(r_err, GT_val, interval1 = 0.95, interval2 = 0.99, bins_val=100):
-    covMat = np.array(r_err["Err"], dtype=float)
-    median = np.median(covMat)
-    c, loc, scale = genextreme.fit(covMat, floc=median)
-
-    min_extreme1,max_extreme1 = genextreme.interval(interval1,c,loc,scale)
-    min_extreme2,max_extreme2 = genextreme.interval(interval2,c,loc,scale)
-    
-    x = np.linspace(min(covMat),max(covMat),2000)
-
-    fig,ax = plt.subplots(1, 1)
-    plt.xlim(0,0.4)
-    plt.plot(x, genextreme.pdf(x, *genextreme.fit(covMat)))
-    plt.hist(np.array(r_err["Err"], dtype=float),bins=100,alpha=0.7, density=True)
-    plt.hist(np.asarray(GT_val["Err"]), edgecolor='k', alpha=0.35, bins=bins_val, density=True) 
-    plt.xlabel('Lengths Counts')
-    plt.ylabel('Probability')
-    plt.title(r'max_extreme1=%.3f,max_extreme2=%.3f' %(max_extreme1, max_extreme2))
-    plt.annotate('Max Extreme Value 1',xy=(max_extreme1,0),xytext=(max_extreme1,1),arrowprops=dict(arrowstyle="->",connectionstyle="arc3",color="black"),color="black")
-    plt.annotate('Max Extreme Value 2',xy=(max_extreme2,0),xytext=(max_extreme2,1),arrowprops=dict(arrowstyle="->",connectionstyle="arc3",color="black"),color="black")
-    plt.grid(True)
-    median = GT_val.median()
-    print("95% CI upper bound:",max_extreme1)
-    print("99% CI upper bound:",max_extreme2)
-    print("Median RE:",median.values)
-    return max_extreme1, max_extreme2, median
-
 # a funtion to mapping model to cpu if gpu is not avaliable
 class CPU_Unpickler(pickle.Unpickler):
     def find_class(self, module, name):
@@ -300,4 +272,52 @@ class CPU_Unpickler(pickle.Unpickler):
             return lambda b: torch.load(io.BytesIO(b), map_location='cpu')
         else: return super().find_class(module, name)
         
-#####################################################3333
+###########################################################
+## Plotting distributions
+
+# a funtion to fit giving data using extreme value distribution
+def Plot_Dist_Train_Extreme(r_err, GT_val,bin1=500,bin2=500,interval1 = 0.95,interval2=0.99):
+    covMat = np.array(r_err["Err"], dtype=float)
+    median = np.median(covMat)
+    c, loc, scale = genextreme.fit(covMat, floc=median)
+    min_extreme1,max_extreme1 = genextreme.interval(interval1,c,loc,scale)
+    min_extreme2,max_extreme2 = genextreme.interval(interval2,c,loc,scale)
+    x = np.linspace(min(covMat),max(covMat),2000)
+    fig,ax = plt.subplots(figsize = (30,10))
+    plt.xlim(0,0.4)
+    plt.plot(x, genextreme.pdf(x, *genextreme.fit(covMat)), linewidth=5)
+    plt.hist(np.array(r_err["Err"], dtype=float),bins=bin1,alpha=0.3,density=True,edgecolor='black',facecolor='gray', linewidth=3,histtype='stepfilled') #{'bar', 'barstacked', 'step', 'stepfilled'})
+    plt.hist(np.asarray(GT_val["Err"]), bins=bin2, alpha=0.3,density=True,edgecolor='red',facecolor='red', linewidth=3,histtype='stepfilled')
+    plt.xlabel('Lengths Counts')
+    plt.ylabel('Probability')
+    plt.title(r'max_extreme1=%.3f,max_extreme2=%.3f' %(max_extreme1, max_extreme2))
+    ax.tick_params(left = False, bottom = False)
+    
+    ax.axvline(min_extreme1, alpha = 0.9, ymax = 0.20, linestyle = ":",linewidth=3,color="red") #,
+    ax.axvline(max_extreme1, alpha = 0.9, ymax = 0.20, linestyle = ":",linewidth=3,color="red") #,
+    ax.text(min_extreme1, 8, "5th", size = 20, alpha = 0.8,color="red")
+    ax.text(max_extreme1, 8, "95th", size = 20, alpha =.8,color="red")
+    ax.axvline(min_extreme2, alpha = 0.9, ymax = 0.20, linestyle = ":",linewidth=3,color="red") #,
+    ax.axvline(max_extreme2, alpha = 0.9, ymax = 0.20, linestyle = ":",linewidth=3,color="red") #,
+    ax.text(min_extreme2, 8, "1st", size = 20, alpha = 0.8,color="red")
+    ax.text(max_extreme2, 8, "99th", size = 20, alpha =.8,color="red")
+    
+    print("95% CI upper bound:",max_extreme1)
+    print("99% CI upper bound:",max_extreme2)
+    print("Median RE:",np.median(np.array(GT_val["Err"], dtype=float)))
+    
+    return c, loc, scale, fig,ax
+
+# Function to plot distribution of subcluster REs
+def Plot_Dist_SubClust_Extreme(r_err, GT_val,bin1=100,bin2=50):
+    covMat = np.array(r_err["Err"], dtype=float)
+    median = np.median(covMat)
+    x = np.linspace(min(covMat),max(covMat),2000)
+    fig,ax = plt.subplots(figsize = (30,10))
+    plt.xlim(0,1)
+    plt.hist(np.array(r_err["Err"], dtype=float),bins=bin1,alpha=0.3,density=True,edgecolor='black',facecolor='gray', linewidth=3,histtype='stepfilled') #{'bar', 'barstacked', 'step', 'stepfilled'})
+    plt.hist(np.asarray(GT_val["Err"]), bins=bin2, alpha=0.3,density=True,edgecolor='darkred',facecolor='red', linewidth=3,histtype='stepfilled')
+    plt.xlabel('Lengths Counts')
+    plt.ylabel('Probability')
+    ax.tick_params(left = False, bottom = False) 
+    return fig,ax

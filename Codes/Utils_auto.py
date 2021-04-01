@@ -10,6 +10,7 @@ from torch.utils.data import Dataset, DataLoader
 import pickle
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
@@ -161,3 +162,34 @@ def model_evaluation(model, le_fam, le_fold, Test_dl, cm = "fold"):
                 torch.cuda.empty_cache()
         else:
             raise exception
+
+####################################################
+## Functino for plotting the boxplot of RE scores
+def gen_boxplot(train,test):
+    train_all_fold=train.copy() # train_all
+    train_all_fold['Family']=train_all_fold['Family'].map(lambda x: x.split('-')[1])
+    data = pd.concat([train_all_fold, test]) 
+    ordered_list=test.groupby('Family').median().sort_values('Err').index.tolist()
+    ordered_list[:0] = ['A','B','C','lyso']
+    plt.figure(figsize=(15,15))
+    g=sns.boxplot(x='Err', y='Family', data=data,order=ordered_list)
+    g.axvline(0.107, alpha = 0.9, linestyle = ":",linewidth=3,color="red")
+    g.axvline(0.127, alpha = 0.9, linestyle = ":",linewidth=1,color="blue")
+    g.axvline(0.147, alpha = 0.9, linestyle = ":",linewidth=3,color="red")
+    g.set_xlim(0,0.5)
+    return(g)
+
+####################################################
+## Calculate the FAS scores 
+def calcSubScore(row,re_values):
+    allval=list()
+    for i in range(1,10):
+        cname=row.index[i]
+        val=float(row[i])
+        sc=float(re_values['SC'][cname])
+        ooc=float(re_values['OOC'][cname])
+        oof=float(re_values['OOF'][cname])
+        score=((((ooc-val)/(oof-sc))*(oof-ooc))-0.014)*100
+        
+        allval.append(score)
+    return(pd.Series(allval))
