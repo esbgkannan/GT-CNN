@@ -14,7 +14,7 @@ Please ensure the following software is installed:
 - [`scipy` ](https://www.scipy.org/install.html)
 - [`numpy` ](https://numpy.org/install/)
 - [`matplotlib` ](https://matplotlib.org/stable/users/installing.html)
-- [`umap`k](https://umap-learn.readthedocs.io/en/latest/)
+- [`umap`](https://umap-learn.readthedocs.io/en/latest/)
 - [`jupyterlab` ](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
 - [`opencv2`](https://pypi.org/project/opencv-python/)
 - [`tensorboardX`](https://pypi.org/project/tensorboardX/)
