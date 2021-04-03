@@ -24,9 +24,9 @@ All necessary modules could be installed using `pip install -r requirements.txt`
 
 ## Dataset and Pretrained Models
 
-All used dataset is avaliable through this link:[dataset](https://www.dropbox.com/sh/u10eufybjhycuph/AAAEtmqI_fUFVSNyysTMDHxUa?dl=0), please download and put it under main folder with name ./Datasets
+All used dataset is available through this link:[dataset](https://www.dropbox.com/sh/shgar3h0c6lyy3b/AAA16q78UmCX_qgp87RpzOcFa?dl=0), please download and put it under main folder with name ./Datasets
 
-All pretrained model is avaliable through this link: [models](https://www.dropbox.com/sh/gn60mm7dy4ywrcr/AADLnvFDiMDuObYOOHiyHwA1a?dl=0), please download and put it under main folder with name ./PretrainedModels
+All pretrained model is available through this link: [models](https://www.dropbox.com/sh/1ziq5qbg0ul8wb2/AAA98kokV0YJndSOd2kRmEKUa?dl=0), please download and put it under main folder with name ./PretrainedModels
 
 ## Complete Pipeline:
 
@@ -43,19 +43,19 @@ Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 ### Step3: Preprocessing
 - Notebook: [1-Preprocessing.ipynb](./Codes/1-Preprocessing.ipynb) 
 - This notebook is mainly for: 
-1. Domain and sequence lenghth based filtering, in our work, based on statistical analyasis, we select 798 as our cuttung threhold and padding length 
+1. Domain and sequence length based filtering, in our work, based on statistical analysis, we select 798 as our cutting threshold and padding length 
 2. Sequence paddings, this is mainly for CNN model to process.
 
 
 ### Step4: CNN-Attention model training
 - Notebook: [2-CNNAttention.ipynb](./Codes/2-CNNAttention.ipynb) 
-- This notebook is for training the cnn attention model using outputs generated from preprocessing steps.
-- The pretrained model is made available and dataset is avaliable upon request.
+- This notebook is for training the CNN-Attention model using outputs generated from preprocessing steps.
+- The pretrained model is made available and dataset is available upon request.
 
 ### Step5: Autoencoder models training
 - Notebook: [3-CNNAutoencoder-all.ipynb](./Codes/3-CNNAutoencoder-all.ipynb) and [4-CNNAutoencoder-sub.ipynb](./Codes/4-CNNAutoencoder-sub.ipynb) 
 - This notebook is for training the autoencoder model using locked features generated from the CNN model.
-- The pretrained models are made available and dataset is avaliable upon request.
+- The pretrained models are made available and dataset is available upon request.
 
 ### Step6: Generate all GT level Reconstruction Error
 - Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
