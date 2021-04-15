@@ -6,7 +6,7 @@ The package has been tested on the following systems:
 
 - Linux: Ubuntu 18.04.5
 
-## Requirement
+## Dependencies
 
 Please ensure the following software is installed:
 
@@ -41,7 +41,7 @@ please download and put it under main folder with name ./ExampleOutputs
 
 ## Complete Pipeline:
 
-This workflow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
+This work flow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
 
 ### Step1: Sequence collection
 
