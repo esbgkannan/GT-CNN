@@ -45,7 +45,7 @@ This work flow is trained and tested with two NVIDIA 2080Ti graph cards. If you 
 
 ### Step1: Sequence collection
 
-Collect related sequences for any family, group you want to analyze. Ideally, you want >100 and <500 sequences purged with a sequnece identity of 10-95%.
+Collect related sequences for any family, group you want to analyze. Sequences purged with a sequence similarity of 60-95%.
 Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 
 ### Step2: Secondary structure prediction
