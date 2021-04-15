@@ -20,7 +20,9 @@ Please ensure the following software is installed:
 - [`tensorboardX`](https://pypi.org/project/tensorboardX/)
 - [`imblearn`](https://pypi.org/project/imblearn/)
 
-All necessary modules could be installed using `pip install -r requirements.txt` command
+Most of necessary modules could be installed using `pip install -r requirements.txt` command
+
+The experiment lab has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the newest version of Pytorch that applicable to your settings.
 
 ## Dataset and Pretrained Models
 
