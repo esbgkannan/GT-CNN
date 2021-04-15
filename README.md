@@ -2,7 +2,7 @@
 
 ## OS Requirements
 
-This package is supported for  Linux. The package has been tested on the following systems:
+The package has been tested on the following systems:
 
 - Linux: Ubuntu 18.04.5
 
@@ -28,20 +28,20 @@ Please ensure the following software is installed:
 
 Most of necessary modules could be installed using `pip install -r requirements.txt` command, running this command should take less than 10 seconds.
 
-The experiment lab has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the newest version of Pytorch that applicable to your settings.
+The experiment workstation has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the newest version of Pytorch that applicable to your settings.
 
 ## Dataset and Pretrained Models
 
-All used dataset is available through this link:[dataset](https://www.dropbox.com/sh/shgar3h0c6lyy3b/AAA16q78UmCX_qgp87RpzOcFa?dl=0), please download and put it under main folder with name ./Datasets
+- All used dataset is available through this link:[dataset](https://www.dropbox.com/sh/shgar3h0c6lyy3b/AAA16q78UmCX_qgp87RpzOcFa?dl=0), please download and put it under main folder with name ./Datasets
 
-All pretrained model is available through this link: [models](https://www.dropbox.com/sh/1ziq5qbg0ul8wb2/AAA98kokV0YJndSOd2kRmEKUa?dl=0), please download and put it under main folder with name ./PretrainedModels
+- All pretrained model is available through this link: [models](https://www.dropbox.com/sh/1ziq5qbg0ul8wb2/AAA98kokV0YJndSOd2kRmEKUa?dl=0), please download and put it under main folder with name ./PretrainedModels
 
-Example outputs file is available through this link: [exampleoutputs](https://www.dropbox.com/sh/blugiec012sqv0v/AABzS6Zjzq4ri8MhjhRIytcoa?dl=0)
+- Example outputs file is available through this link: [exampleoutputs](https://www.dropbox.com/sh/blugiec012sqv0v/AABzS6Zjzq4ri8MhjhRIytcoa?dl=0)
 please download and put it under main folder with name ./ExampleOutputs
 
 ## Complete Pipeline:
 
-This workflow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please use precomputed RE values from dataset folder.
+This workflow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
 
 ### Step1: Sequence collection
 
