@@ -4,14 +4,14 @@
 
 The package has been tested on the following systems:
 
-- Linux: Ubuntu 18.04.5
+- OS: Ubuntu 18.04.5
 
 ## Dependencies
 
 Please ensure the following software is installed:
 
 - [`Python`](https://www.python.org/downloads/)
-- [`Pytorch recommend using GPU version`](https://pytorch.org/)
+- [`Pytorch (with CUDA)`](https://pytorch.org/)
 - [`fastai`](https://fastai1.fast.ai/install.html)
 - [`pandas`](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 - [`seaborn`](https://seaborn.pydata.org/installing.html)
@@ -26,26 +26,29 @@ Please ensure the following software is installed:
 - [`tensorboardX`](https://pypi.org/project/tensorboardX/)
 - [`imblearn`](https://pypi.org/project/imblearn/)
 
-It is recommend to use Anaconda for environment control, it can be downloaded through this [link](https://www.anaconda.com/)
-
-Most of necessary modules could be installed using  <b>pip install -r requirements.txt</b> command, running this command should take less than 5 minutes.
-
 The experiment workstation has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the version of Pytorch that applicable to your settings.
 
-## Dataset and Pretrained Models
+## Environments, Dataset and Pretrained Models Preparation
 
-- All used dataset is available through this link:[dataset](https://www.dropbox.com/sh/shgar3h0c6lyy3b/AAA16q78UmCX_qgp87RpzOcFa?dl=0), please download and put it under main folder with name ./Datasets
+```bash
+# clone this repository to replicate our experiments
+git clone https://github.com/esbgkannan/GT-CNN
+cd GT-CNN
 
-- All pretrained model is available through this link: [models](https://www.dropbox.com/sh/1ziq5qbg0ul8wb2/AAA98kokV0YJndSOd2kRmEKUa?dl=0), please download and put it under main folder with name ./PretrainedModels
+# this will download required files for the analysis
+# (1) datasets, (2) pretrained models, (3) example outputs
+bash download.sh
 
-- Example outputs file is available through this link: [exampleoutputs](https://www.dropbox.com/sh/blugiec012sqv0v/AABzS6Zjzq4ri8MhjhRIytcoa?dl=0)
-please download and put it under main folder with name ./ExampleOutputs
-
-Or you can run <b>bash download.sh</b>  command to download all necessary files at once.
+# using Anocaonda to set environment
+conda create --name env_name python=3.7
+conda activate env_name
+# install packages (this should take a few minutes)
+pip install -r requirements.txt
+```
 
 ## Complete Pipeline:
 
-This work flow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
+The model is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
 
 ### Step1: Sequence collection
 
@@ -64,27 +67,25 @@ Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 2. Sequence paddings, this is mainly for CNN model to process.
 
 
-### Step4: CNN-Attention model training
+### Step4: CNN-Attention model training (requires GPU)
 - Notebook: [2-CNNAttention.ipynb](./Codes/2-CNNAttention.ipynb) 
 - This notebook is for training the CNN-Attention model using outputs generated from preprocessing steps.
 - The pretrained model is made available and dataset is available upon request.
 
-### Step5: Autoencoder models training
+### Step5: Autoencoder models training (requires GPU)
 - Notebook: [3-CNNAutoencoder-all.ipynb](./Codes/3-CNNAutoencoder-all.ipynb) and [4-CNNAutoencoder-sub.ipynb](./Codes/4-CNNAutoencoder-sub.ipynb) 
 - This notebook is for training the autoencoder model using locked features generated from the CNN model.
 - The pretrained models are made available and dataset is available upon request.
 
-### Step6: Generate all GT level Reconstruction Error
+### Step6: Generate all GT level Reconstruction Error (recommend GPU)
 - Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
 - Pretrained: ./PretrainedModels/Autoencoder_gtAll.pickle
-- Better with GPU. 
 
-### Step7: Generate GT cluster level Fold Assignment Score
+### Step7: Generate GT cluster level Fold Assignment Score (recommend GPU)
 - Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
 - Pretrained: ./PretrainedModels/Autoencoder_gt--.pickle
-- Better with GPU.
 
-### Step8: Analysis and fold prediction using the above results
+### Step8: Analysis and fold prediction using the above results (recommend GPU)
 - Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
 - Plotting of results.
 - Generate RE and FAS values for new families.
