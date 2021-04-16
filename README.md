@@ -39,7 +39,7 @@ cd GT-CNN
 # (1) datasets, (2) pretrained models, (3) example outputs
 bash download.sh
 
-# using Anocaonda to set environment
+# using Anaconda to set environment
 conda create --name env_name python=3.7 -y
 conda activate env_name
 # install packages (this should take a few minutes)
