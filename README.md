@@ -26,9 +26,11 @@ Please ensure the following software is installed:
 - [`tensorboardX`](https://pypi.org/project/tensorboardX/)
 - [`imblearn`](https://pypi.org/project/imblearn/)
 
+It is recommend to use Anaconda for environment control, it can be downloaded through this [link](https://www.anaconda.com/)
+
 Most of necessary modules could be installed using `pip install -r requirements.txt` command, running this command should take less than 10 seconds.
 
-The experiment workstation has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the newest version of Pytorch that applicable to your settings.
+The experiment workstation has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the version of Pytorch that applicable to your settings.
 
 ## Dataset and Pretrained Models
 
