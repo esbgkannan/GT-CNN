@@ -41,6 +41,8 @@ The experiment workstation has Pytorch environment of version 1.8+ and cuda vers
 - Example outputs file is available through this link: [exampleoutputs](https://www.dropbox.com/sh/blugiec012sqv0v/AABzS6Zjzq4ri8MhjhRIytcoa?dl=0)
 please download and put it under main folder with name ./ExampleOutputs
 
+Or you can run `bash download.sh` command to download all necessary files at once.
+
 ## Complete Pipeline:
 
 This work flow is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
