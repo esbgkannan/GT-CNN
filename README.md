@@ -28,7 +28,7 @@ Please ensure the following software is installed:
 
 It is recommend to use Anaconda for environment control, it can be downloaded through this [link](https://www.anaconda.com/)
 
-Most of necessary modules could be installed using `pip install -r requirements.txt` command, running this command should take less than 10 seconds.
+Most of necessary modules could be installed using  <b>pip install -r requirements.txt</b> command, running this command should take less than 5 minutes.
 
 The experiment workstation has Pytorch environment of version 1.8+ and cuda version of 11.1. Please install the version of Pytorch that applicable to your settings.
 
@@ -41,7 +41,7 @@ The experiment workstation has Pytorch environment of version 1.8+ and cuda vers
 - Example outputs file is available through this link: [exampleoutputs](https://www.dropbox.com/sh/blugiec012sqv0v/AABzS6Zjzq4ri8MhjhRIytcoa?dl=0)
 please download and put it under main folder with name ./ExampleOutputs
 
-Or you can run `bash download.sh` command to download all necessary files at once.
+Or you can run <b>bash download.sh</b>  command to download all necessary files at once.
 
 ## Complete Pipeline:
 
