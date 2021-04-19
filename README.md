@@ -35,7 +35,7 @@ The experiment workstation has Pytorch environment of version 1.8+ and cuda vers
 git clone https://github.com/esbgkannan/GT-CNN
 cd GT-CNN
 
-# this will download required files for the analysis
+# this will download required files into the following directories for the analysis
 # (1) datasets, (2) pretrained models, (3) example outputs
 bash download.sh
 
@@ -48,34 +48,34 @@ pip install -r requirements.txt
 
 ## Complete Pipeline:
 
-The model is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have gpu, calculate reconstruction errors will take approximately an hour. Please feel free to use precomputed RE values from dataset folder to booster the process.
+Note: The model is trained and tested with two NVIDIA 2080Ti graph cards. If you don't have a gpu, calculating reconstruction errors can take approximately up to an hour. Please feel free to use precomputed RE values from the datasets folder to save this computational time instead.
 
 ### Step1: Sequence collection
 
-Collect related sequences for any family, group you want to analyze. Sequences purged with a sequence similarity of 60-95%.
+Collect related sequences for any family or group you want to analyze. Sequences can ideally be purged with a sequence similarity of 60-95%.
 Edit sequence IDs in format (>Family(GT2-A)|UniqueID|TaxInfo)
 
 ### Step2: Secondary structure prediction
 - Done using NetsurfP2.0[link](http://www.cbs.dtu.dk/services/NetSurfP/). Generates a csv file with the predictions for all sequences. 
-- Note: any other SOTA SS predictor also works as long as the output csv file is formated with such columns: ["Name", "fold", "family", "q3seq", "rawseq"]
+- Note: any other SOTA SS predictor also works as long as the output csv file is formated with such columns: ["Name", "fold", "family", "q3seq", "rawseq"] where q3seq column should have the string of predicted secondary structures with C: Coils, H: Helix and E: Beta sheets and the rawseq column should have the primary sequence of the exact length as the string in q3seq column.
 
 
 ### Step3: Preprocessing
 - Notebook: [1-Preprocessing.ipynb](./Codes/1-Preprocessing.ipynb) 
 - This notebook is mainly for: 
-1. Domain and sequence length based filtering, in our work, based on statistical analysis, we select 798 as our cutting threshold and padding length 
-2. Sequence paddings, this is mainly for CNN model to process.
+1. Domain and sequence length based filtering. For the GTs, based on statistical analysis of domain lengths, we select 798 as our threshold for maximum sequence and padding length. Any sequences longer than this should be trimmed to less than or equal to 798 amino acids. This can be done to include only the GT domain and remove other confounding domains with elaborate secondary structures.
+2. Adding the sequence paddings to make all sequences of 798 aa length, which is mainly for the CNN model to process the input as a single matrix.
 
 
 ### Step4: CNN-Attention model training (requires GPU)
 - Notebook: [2-CNNAttention.ipynb](./Codes/2-CNNAttention.ipynb) 
 - This notebook is for training the CNN-Attention model using outputs generated from preprocessing steps.
-- The pretrained model is made available and dataset is available upon request.
+- The pretrained model is made available and the training datasets are available upon request.
 
 ### Step5: Autoencoder models training (requires GPU)
 - Notebook: [3-CNNAutoencoder-all.ipynb](./Codes/3-CNNAutoencoder-all.ipynb) and [4-CNNAutoencoder-sub.ipynb](./Codes/4-CNNAutoencoder-sub.ipynb) 
 - This notebook is for training the autoencoder model using locked features generated from the CNN model.
-- The pretrained models are made available and dataset is available upon request.
+- The pretrained models are made available and related datasets are available upon request.
 
 ### Step6: Generate all GT level Reconstruction Error (recommend GPU)
 - Notebook: [5-RE_FAS_calculations.ipynb](./Codes/5-RE_FAS_calculations.ipynb) 
@@ -96,7 +96,7 @@ Required steps are Step 1-3 and 6-8.
 
 The pretrained models from Step 4 and 5 are made available.
 
-All the required files to run the notebooks for these required steps are provided in the directories [PretrainedModels](./PretrainedModels) and [Datasets](./Datasets) 
+All the required files to run the notebooks for these required steps are provided in the directories PretrainedModels and Datasets which will be generated upon running the download.sh script.
 
 All the required notebooks outlining the steps are provided in the [Codes](./Codes) directory.
 
