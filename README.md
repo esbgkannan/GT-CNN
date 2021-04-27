@@ -123,4 +123,4 @@ Rahil Taujale, Zhongliang Zhou, Wayland Yeung, Kelley W Moremen, Sheng Li and Na
 
 ## License
 
-This work is licensed under the [MIT](./LICESNE) license.
+This work is licensed under the [MIT](./LICENSE) license.
